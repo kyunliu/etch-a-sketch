@@ -10,12 +10,20 @@ function resetBoard(){
 }
 
 const clearButton = document.getElementById('clear');
+let numPrompts = 0;
 
 clearButton.addEventListener("click", () => {
+    if (numPrompts >= 100){
+        alert("You have reached the maximum nuber of resets. Please refresh.")
+        return;
+    }
+
     const userConfirmation = prompt('Are you sure you want to clear this board? Type "64" to clear.')
     if (userConfirmation === "64"){
         resetBoard();
+        numPrompts++;
     } 
+    console.log(numPrompts);
 });
 
 
