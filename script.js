@@ -14,8 +14,8 @@ const clearButton = document.getElementById('clear');
 clearButton.addEventListener("click", () => {
     const userConfirmation = prompt('Type the amount of squares you would like. (Max is 100)')
     if(userConfirmation <= 100){
-        resetBoard();
         createGrid(userConfirmation);
+        resetBoard();
     }else{
         alert('Grid size must be 100 or less.');
     }
@@ -38,6 +38,5 @@ function createGrid(userConfirmation = 16){
         container.appendChild(row);
     }
 }
-
 createGrid();
 
