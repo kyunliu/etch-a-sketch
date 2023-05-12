@@ -12,12 +12,12 @@ function resetBoard(){
 const clearButton = document.getElementById('clear');
 
 clearButton.addEventListener("click", () => {
-    const userConfirmation = prompt('Type the amount of squares you would like. (Max is 100)')
-    if(userConfirmation <= 100){
+    const userConfirmation = prompt('Type the amount of squares you would like. (min.16 max.64)')
+    if(userConfirmation >= 16 && userConfirmation <= 64){
         createGrid(userConfirmation);
         resetBoard();
     }else{
-        alert('Grid size must be 100 or less.');
+        alert('Grid size must be between 16 and 64.');
     }
 });
 
