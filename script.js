@@ -10,34 +10,34 @@ function resetBoard(){
 }
 
 const clearButton = document.getElementById('clear');
-let numPrompts = 0;
 
 clearButton.addEventListener("click", () => {
-    if (numPrompts >= 100){
-        alert("You have reached the maximum nuber of resets. Please refresh.")
-        return;
-    }
-
-    const userConfirmation = prompt('Are you sure you want to clear this board? Type "64" to clear.')
-    if (userConfirmation === "64"){
+    const userConfirmation = prompt('Type the amount of squares you would like. (Max is 100)')
+    if(userConfirmation <= 100){
         resetBoard();
-        numPrompts++;
-    } 
-    console.log(numPrompts);
+        createGrid(userConfirmation);
+    }else{
+        alert('Grid size must be 100 or less.');
+    }
 });
 
+function createGrid(userConfirmation = 16){
+    container.innerHTML = '';
+    for(let i=0; i < userConfirmation; i++) {
+        const row = document.createElement('div');
+        row.classList.add('row');
 
-for(let i=0; i < 16; i++) {
-    const row = document.createElement('div');
-    row.classList.add('row');
+        for (let j=0; j < userConfirmation; j++) {
+            const grid = document.createElement('div');
+            grid.classList.add('grid');
+            grid.addEventListener('mouseover', hoverChange);
+        
+            row.appendChild(grid);
+        }
 
-    for (let j=0; j < 16; j++) {
-        const grid = document.createElement('div');
-        grid.classList.add('grid');
-        grid.addEventListener('mouseover', hoverChange);
-    
-        row.appendChild(grid);
+        container.appendChild(row);
     }
-
-    container.appendChild(row);
 }
+
+createGrid();
+
